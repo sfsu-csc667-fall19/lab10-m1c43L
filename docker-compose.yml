@@ -1,0 +1,25 @@
+version: "3"
+services:
+  web:
+    image: hello-swarm
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3000:3000"
+    networks:
+      - webnet
+    environment:
+      - REDIS_HOST=redis
+  redis:
+    image : redis:5.0.4
+    ports:
+      - "6379:6379"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+networks:
+  webnet:
