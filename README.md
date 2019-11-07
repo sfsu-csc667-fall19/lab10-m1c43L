@@ -30,6 +30,7 @@
 ## Run on aws
 - Install docker with `sudo snap install docker`
 - Run with `sudo docker run -d -p 80:3000 <username>/hello-docker:v1`
+- If you want to run the full stack, you will need the `docker-compose.yml` file
 
 ## TODO
 - Install redis client
